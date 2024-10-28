@@ -48,7 +48,7 @@ conf.create_dirs = [
                     projects_dir
                     ]
 
-conf.arch_pkgs = ["git", "base-devel", "xorg", "xorg-xinit", "neovim", "brightnessctl", "neofetch", "alsa-utils", "pcmanfm", "pamixer", "zsh-syntax-highlighting", "zsh", "ripgrep", "noto-fonts"]
+conf.arch_pkgs = ["git", "base-devel", "xorg", "xorg-xinit", "neovim", "brightnessctl", "neofetch", "alsa-utils", "pcmanfm", "pamixer", "zsh-syntax-highlighting", "zsh", "ripgrep", "noto-fonts", "dmenu"]
 conf.aur_pkgs = ["brave-bin", "pfetch"]
 
 
