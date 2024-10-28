@@ -48,16 +48,16 @@ conf.create_dirs = [
                     projects_dir
                     ]
 
-conf.arch_pkgs = ["base-devel", "xorg", "xorg-xinit", "neovim", "brightnessctl", "git", "neofetch", "alsa-utils", "pcmanfm", "pamixer", "zsh-syntax-highlighting", "zsh", "ripgrep", "noto-fonts"]
+conf.arch_pkgs = ["git", "base-devel", "xorg", "xorg-xinit", "neovim", "brightnessctl", "neofetch", "alsa-utils", "pcmanfm", "pamixer", "zsh-syntax-highlighting", "zsh", "ripgrep", "noto-fonts"]
 conf.aur_pkgs = ["brave-bin", "pfetch"]
 
 
-ndwm = GitPkg(name="ndwm", link="https://github.com/miguelnto/ndwm", install_dir=projects_dir, check_if_exists=True)
-libtoml = GitPkg(name="libtoml", link="https://github.com/miguelnto/libtoml", install_dir=projects_dir, check_if_exists=True)
-sah = GitPkg(name="sah", link="https://github.com/miguelnto/sah", install_dir=projects_dir, check_if_exists=True)
-sblocks = GitPkg(name="sblocks", link="https://github.com/miguelnto/sblocks", install_dir=projects_dir, check_if_exists=True)
-st = GitPkg(name="st", link="https://github.com/miguelnto/st", install_dir=projects_dir, check_if_exists=True)
-scripts = GitPkg(name="scripts", link="https://github.com/miguelnto/scripts", install_dir=projects_dir, check_if_exists=True)
+ndwm = GitPkg(name="ndwm", link="https://github.com/miguelnto/ndwm", install_dir=projects_dir,) 
+libtoml = GitPkg(name="libtoml", link="https://github.com/miguelnto/libtoml", install_dir=projects_dir, )
+sah = GitPkg(name="sah", link="https://github.com/miguelnto/sah", install_dir=projects_dir, )
+sblocks = GitPkg(name="sblocks", link="https://github.com/miguelnto/sblocks", install_dir=projects_dir, )
+st = GitPkg(name="st", link="https://github.com/miguelnto/st", install_dir=projects_dir, )
+scripts = GitPkg(name="scripts", link="https://github.com/miguelnto/scripts", install_dir=projects_dir, )
 
 conf.git_pkgs = [
                  sah,
@@ -68,6 +68,6 @@ conf.git_pkgs = [
                  st,
                 ] 
 
-dotfs = GitPkg(name="dotfiles", link="https://github.com/miguelnto/dotfiles", install_dir = conf.home_dir, check_if_exists=True)
-conf.git_pkgs_to_clone = [dotfs]
+dotfs = GitPkg(name="dotfiles", link="https://github.com/miguelnto/dotfiles", install_dir = conf.home_dir, )
+conf.git_pkgs_to_clone = [ dotfs ]
 

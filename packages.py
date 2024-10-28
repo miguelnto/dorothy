@@ -2,16 +2,15 @@ import commands
 import os
 
 class GitPkg:
-    def __init__(self, name: str, link: str, install_dir: str, check_if_exists: bool) -> None:
+    def __init__(self, name: str, link: str, install_dir: str) -> None:
         self.name = name
         self.link = link
         self.install_dir = install_dir
         self.prg_location = f"{self.install_dir}/{self.name}"
-        self.check_if_exists = check_if_exists
         self.dir_exists: bool = os.path.isdir(self.prg_location)
 
     def git_clone(self) -> None:
-        if self.check_if_exists and self.dir_exists:
+        if self.dir_exists:
             return
         git_cmd = ["git", "clone"]
         git_cmd.append(self.link)
@@ -20,7 +19,7 @@ class GitPkg:
         commands.execute(cmd=git_cmd)
 
     def install(self) -> None:
-        if self.check_if_exists and self.dir_exists:
+        if self.dir_exists:
             return
         self.git_clone()
         make_cmd = ["sudo", "make", "-C", self.prg_location, "install"]
