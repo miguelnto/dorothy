@@ -7,6 +7,11 @@ class Dotfile:
     name: str = ""
     real_location: str = ""
 
+@dataclass
+class Directory:
+    src: str
+    root_access: bool
+
 def cp_cmd(dotf: Dotfile) -> list[str]:
     return ["sudo", "cp", "-vf", dotf.name, dotf.real_location]
 
@@ -16,15 +21,18 @@ def cp(dotf: Dotfile) -> None:
 def mkdir_cmd(direc: str) -> list[str]:
     return ["sudo", "mkdir", "-vp", direc]
 
-def mkdir(direc: str) -> None:
-    subprocess.run(mkdir_cmd(direc), capture_output=False, check=True)
+def mkdir(direc: Directory) -> None:
+    mk_cmd = mkdir_cmd(direc.src)
+    if not direc.root_access:
+        mk_cmd.pop(0)
+    subprocess.run(mk_cmd, capture_output=False, check=True)
 
 class Dorothy:
     def __init__(self, dotfiles_dir: str = "", home_dir: str = "") -> None:
         self.dotfiles: list[Dotfile] = []
         self.dotfiles_dir: str = dotfiles_dir
         self.home_dir: str = home_dir
-        self.create_dirs: list[str] = []
+        self.create_dirs: list[Directory] = []
         self.aur_pkgs: list[str] = []
         self.arch_pkgs: list[str] = []
         self.git_pkgs: list[packages.GitPkg] = []

@@ -1,4 +1,4 @@
-from dorothy import Dorothy, Dotfile
+from dorothy import Directory, Dorothy, Dotfile
 from packages import GitPkg
 
 conf = Dorothy()
@@ -10,16 +10,16 @@ conf.dotfiles_dir = conf.home_dir + "/dotfiles"
 zshrc = Dotfile(conf.dotfiles_dir + "/zshrc", conf.home_dir + "/.zshrc")
 
 # sblocks configuration
-sblocks_dir = conf.home_dir + "/.config/sblocks"
-sblocks_config = Dotfile(conf.dotfiles_dir + "/sblocks/config.toml", sblocks_dir + "/config.toml")
+sblocks_dir = Directory(conf.home_dir + "/.config/sblocks", False)
+sblocks_config = Dotfile(conf.dotfiles_dir + "/sblocks/config.toml", sblocks_dir.src + "/config.toml")
 
 # Neovim configuration
-initvim_dir = conf.home_dir + "/.config/nvim"
-initvim = Dotfile(conf.dotfiles_dir + "/init.vim", initvim_dir + "/init.vim")
+initvim_dir = Directory(conf.home_dir + "/.config/nvim", False)
+initvim = Dotfile(conf.dotfiles_dir + "/init.vim", initvim_dir.src + "/init.vim")
 
 # Font configuration
-font_dir = "/etc/fonts"
-fontconf = Dotfile(conf.dotfiles_dir + "/fonts/local.conf", font_dir + "/local.conf")
+font_dir = Directory("/etc/fonts", True)
+fontconf = Dotfile(conf.dotfiles_dir + "/fonts/local.conf", font_dir.src + "/local.conf")
 
 # Keyboard configuration
 keyboard_conf = Dotfile(conf.dotfiles_dir + "/vconsole.conf", "/etc/vconsole.conf")
@@ -38,7 +38,7 @@ conf.dotfiles = [
                  ]
 
 # projects directory
-projects_dir = conf.home_dir + "/dev/projects"
+projects_dir = Directory(conf.home_dir + "/dev/projects", False)
 
 # directories to create
 conf.create_dirs = [
@@ -52,12 +52,12 @@ conf.arch_pkgs = ["git", "base-devel", "xorg", "xorg-xinit", "neovim", "brightne
 conf.aur_pkgs = ["brave-bin", "pfetch"]
 
 
-ndwm = GitPkg(name="ndwm", link="https://github.com/miguelnto/ndwm", install_dir=projects_dir,) 
-libtoml = GitPkg(name="libtoml", link="https://github.com/miguelnto/libtoml", install_dir=projects_dir, )
-sah = GitPkg(name="sah", link="https://github.com/miguelnto/sah", install_dir=projects_dir, )
-sblocks = GitPkg(name="sblocks", link="https://github.com/miguelnto/sblocks", install_dir=projects_dir, )
-st = GitPkg(name="st", link="https://github.com/miguelnto/st", install_dir=projects_dir, )
-scripts = GitPkg(name="scripts", link="https://github.com/miguelnto/scripts", install_dir=projects_dir, )
+ndwm = GitPkg(name="ndwm", link="https://github.com/miguelnto/ndwm", install_dir=projects_dir.src,) 
+libtoml = GitPkg(name="libtoml", link="https://github.com/miguelnto/libtoml", install_dir=projects_dir.src, )
+sah = GitPkg(name="sah", link="https://github.com/miguelnto/sah", install_dir=projects_dir.src, )
+sblocks = GitPkg(name="sblocks", link="https://github.com/miguelnto/sblocks", install_dir=projects_dir.src, )
+st = GitPkg(name="st", link="https://github.com/miguelnto/st", install_dir=projects_dir.src, )
+scripts = GitPkg(name="scripts", link="https://github.com/miguelnto/scripts", install_dir=projects_dir.src, )
 
 conf.git_pkgs = [
                  sah,
