@@ -1,5 +1,5 @@
 import os
-from .utils.arquix_print import aq_print
+from .utils.arquix_print import aq_print 
 import subprocess
 
 class GitPkg:

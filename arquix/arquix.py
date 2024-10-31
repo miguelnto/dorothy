@@ -58,7 +58,7 @@ class Arquix:
         self.arch_pkgs: list[str] = []
         self.git_pkgs: list[packages.GitPkg] = []
         self.additional_commands: list[ShellCommand] = []
-        self.operations: list[AqOperation] = []
+        self.operations: list[Operation] = []
 
     def copy_paste_dotfiles(self) -> None:
         for dotfile in self.dotfiles:

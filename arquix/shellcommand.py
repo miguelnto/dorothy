@@ -1,6 +1,6 @@
 import subprocess
 from typing import Optional
-from arquix.arquix_print import aq_print
+from .utils.arquix_print import aq_print
 
 class ShellCommand:
     def __init__(self, cmd: list[str], description: Optional[str] = None) -> None:
